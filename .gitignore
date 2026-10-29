@@ -1,0 +1,12 @@
+# my git ignore file
+
+# ignore the .idea, bin, and obj directories
+.idea/
+bin/
+obj/
+
+# ignore all .dll files
+.dll
+
+# ignore the launchSettings.json file
+launchSettings.json
