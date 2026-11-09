@@ -4,22 +4,31 @@ namespace RestaurantsApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class RestaurantsController : ControllerBase
 {
-    private static readonly string[] Summaries =
-    [
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    ];
-
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpGet(Name = "GetRestaurants")]
+    public ISet<Restaurant> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        HashSet<Restaurant>_restaurants = new HashSet<Restaurant>();
+        _restaurants.Add(
+            new Restaurant()
+            {
+                Name = "Burger King",
+                PostCode = "FK81PD",
+                Address = "18 Somewhere Nice Road, London, UK",
+                Cuisine = "American"
+            }
+        );
+        _restaurants.Add(
+            new Restaurant()
+            {
+                Name = "Pasta!",
+                PostCode = "DA82HD",
+                Address = "100 Big Boulevard, Birmingham, UK",
+                Cuisine = "Italian"
+            }
+        );
+
+        return _restaurants;
     }
 }

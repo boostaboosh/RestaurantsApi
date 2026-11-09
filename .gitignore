@@ -10,3 +10,6 @@ obj/
 
 # ignore the launchSettings.json file
 launchSettings.json
+
+# remove mac os desktop services store for file UI metadata
+.DS_Store
