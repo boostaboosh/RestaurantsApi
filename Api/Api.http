@@ -1,0 +1,11 @@
+// update this. 
+// this is a saved list of http requests I can send to my running api with 1 click from rider
+// like a saved curl
+// it still points to /weatherforecast which I deleted. I need to change it to Restaurants later
+
+@Api_HostAddress = http://localhost:5230
+
+GET {{Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

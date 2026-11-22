@@ -6,10 +6,13 @@ bin/
 obj/
 
 # ignore all .dll files
-.dll
+*.dll
 
 # ignore the launchSettings.json file
 launchSettings.json
+
+# ignore Rider file which stores state for this solution locally
+*.DotSettings.user
 
 # remove mac os desktop services store for file UI metadata
 .DS_Store

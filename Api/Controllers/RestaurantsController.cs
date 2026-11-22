@@ -1,15 +1,17 @@
+using Api;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RestaurantsApi.Controllers;
+namespace Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class RestaurantsController : ControllerBase
 {
     [HttpGet(Name = "GetRestaurants")]
-    public ISet<Restaurant> Get()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult<HashSet<Restaurant>> Get()
     {
-        HashSet<Restaurant>_restaurants = new HashSet<Restaurant>();
+        HashSet<Restaurant> _restaurants = new HashSet<Restaurant>();
         _restaurants.Add(
             new Restaurant()
             {
@@ -28,7 +30,6 @@ public class RestaurantsController : ControllerBase
                 Cuisine = "Italian"
             }
         );
-
-        return _restaurants;
+        return new OkObjectResult(_restaurants);
     }
 }

@@ -1,4 +1,4 @@
-namespace RestaurantsApi;
+namespace Api;
 
 public class Restaurant
 {
