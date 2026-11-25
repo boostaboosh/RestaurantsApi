@@ -42,10 +42,6 @@ public class RestaurantControllerTests
         Assert.NotNull(result.Value);
         Restaurant actualRestaurant = Assert.IsType<Restaurant>(result.Value);
         
-        // todo: remove
-        // OkObjectResult okResult = Assert.IsType<OkObjectResult>(result.Result);
-        // Restaurant actualRestaurant = Assert.IsType<Restaurant>(okResult.Value);
-        
         // check if expected restaurant matches actual restaurant
         Assert.Equal(expectedRestaurant, actualRestaurant);
     }

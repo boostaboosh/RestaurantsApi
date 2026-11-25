@@ -44,18 +44,7 @@ public class RestaurantsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<Restaurant> GetById(string id)
     {
-        // _restaurants.FirstOrDefault();
-        // return _restaurants.FirstOrDefault((restaurant) => { return restaurant?.Id.Equals(id) ?? false; }, null) ?? NotFound(id);
-        // throw new NotImplementedException();
-        
-        foreach (var restaurant in _restaurants)
-        {
-            if (restaurant.Id.Equals(id))
-            {
-                return restaurant;
-            }
-        }
-
-        return NotFound();
+        Restaurant? restaurant = _restaurants.FirstOrDefault(r => r.Id.Equals(id));
+        return restaurant == null ? NotFound() : restaurant;
     }
 }
