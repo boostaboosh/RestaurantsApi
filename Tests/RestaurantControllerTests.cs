@@ -47,19 +47,19 @@ public class RestaurantControllerTests
     }
     
     [Fact]
-    public void GetByIdReturnsNotFoundForRestaurantThatIsNotPresent()
+    public void GetByIdReturnsBadRequestForRestaurantThatIsNotPresent()
     {
         // setup controller
         RestaurantsController controller = new RestaurantsController();
         
         // declare expected result
-        NotFoundResult expectedResult = new NotFoundResult();
+        BadRequestResult expectedResult = new BadRequestResult();
         
         // get actual result
         ActionResult<Restaurant> actualResult = controller.GetById("3");
         
         // check if expected result matches actual result
-        NotFoundResult actualNotFoundResult = Assert.IsType<NotFoundResult>(actualResult.Result);
+        BadRequestResult actualNotFoundResult = Assert.IsType<BadRequestResult>(actualResult.Result);
         Assert.Equal(expectedResult.StatusCode, actualNotFoundResult.StatusCode);
     }
 }

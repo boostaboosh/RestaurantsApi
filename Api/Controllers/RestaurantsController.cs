@@ -45,6 +45,6 @@ public class RestaurantsController : ControllerBase
     public ActionResult<Restaurant> GetById(string id)
     {
         Restaurant? restaurant = _restaurants.FirstOrDefault(r => r.Id.Equals(id));
-        return restaurant == null ? NotFound() : restaurant;
+        return restaurant == null ? BadRequest() : restaurant;
     }
 }
