@@ -1,7 +1,8 @@
 namespace Api;
 
-public class Restaurant
+public record class Restaurant
 {
+    public required String Id { get; set; }
     public required String Name { get; set; }
     public required String PostCode { get; set; }
     public required String Address { get; set; }

@@ -6,14 +6,14 @@ namespace Api.Controllers;
 [Route("[controller]")]
 public class RestaurantsController : ControllerBase
 {
-    [HttpGet(Name = "GetRestaurants")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public ActionResult<HashSet<Restaurant>> Get()
+    private readonly HashSet<Restaurant> _restaurants = new HashSet<Restaurant>();
+
+    public RestaurantsController()
     {
-        HashSet<Restaurant> _restaurants = new HashSet<Restaurant>();
         _restaurants.Add(
             new Restaurant()
             {
+                Id = "1",
                 Name = "Burger King",
                 PostCode = "FK81PD",
                 Address = "18 Somewhere Nice Road, London, UK",
@@ -23,12 +23,39 @@ public class RestaurantsController : ControllerBase
         _restaurants.Add(
             new Restaurant()
             {
+                Id = "2",
                 Name = "Pasta!",
                 PostCode = "DA82HD",
                 Address = "100 Big Boulevard, Birmingham, UK",
                 Cuisine = "Italian"
             }
         );
+    }
+    
+    [HttpGet(Name = "GetRestaurants")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult<HashSet<Restaurant>> Get()
+    {
         return new OkObjectResult(_restaurants);
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<Restaurant> GetById(string id)
+    {
+        // _restaurants.FirstOrDefault();
+        // return _restaurants.FirstOrDefault((restaurant) => { return restaurant?.Id.Equals(id) ?? false; }, null) ?? NotFound(id);
+        // throw new NotImplementedException();
+        
+        foreach (var restaurant in _restaurants)
+        {
+            if (restaurant.Id.Equals(id))
+            {
+                return restaurant;
+            }
+        }
+
+        return NotFound();
     }
 }
